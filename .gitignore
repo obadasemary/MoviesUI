@@ -1,0 +1,68 @@
+# OS generated files #
+######################
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+*.DS_Store
+
+# Xcode
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+project.xcworkspace/
+xcuserdata/
+
+# Eclipse
+.classpath
+.project
+.settings
+
+# Generated files
+/web-app/WEB-INF
+build/
+*.o
+*.pyc
+target
+*.ipa
+*dsym.zip
+*.log
+
+# Other source repository archive directories (protects when importing)
+.hg
+.svn
+CVS
+
+# automatic backup files
+*~.nib
+*.swp
+*~
+*(Autosaved).rtfd/
+Backup[ ]of[ ]*.pages/
+Backup[ ]of[ ]*.key/
+Backup[ ]of[ ]*.numbers/
+
+# Code coverage
+env.sh
+
+# Dependency manager
+Carthage
+Pods
+
+# Fastlane
+fastlane/Preview.html
+fastlane/report.xml
+#fastlane/README.md
+firebase-debug.log
+
+Fabric.framework
+
+#Idea
+.idea
+.idea/
+/.ruby-version
+
+#sonarqube
+.scannerwork
