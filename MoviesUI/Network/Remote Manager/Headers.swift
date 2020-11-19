@@ -11,6 +11,7 @@ func headers() -> [String: String] {
     
     var headers = [String: String]()
     headers["Content-Type"] = "application/json"
+    headers["Accept"] = "application/json"
 //    headers["X-Authorization"] = AuthorizationDataManager().getBearerToken()
 //    headers["X-Lang"] = UserManager.shared.getLanguage().rawValue
     
