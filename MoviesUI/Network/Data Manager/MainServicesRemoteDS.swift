@@ -16,9 +16,10 @@ class MainServicesRemoteDS: MainServicesRepoType {
         self.context = context
     }
 
-    func getCountriesWithCities() -> AnyPublisher<CountriesWithCitiesResponse, APIError> {
-        let router = Router.getCountriesWithCities.get(params: "", httpHeaders: headers())
-        let publisher: AnyPublisher<CountriesWithCitiesResponse, APIError> = context.doRequest(request: router)
+    func getCountriesWithCities() -> AnyPublisher<MovieResponse, APIError> {
+        let params = [URLQueryItem(name: "s", value: "spiderman"), URLQueryItem(name: "apikey", value: "a22cefd9")]
+        let router = Router.getMovieList.get(params: "", httpHeaders: headers(), queryItems: params)
+        let publisher: AnyPublisher<MovieResponse, APIError> = context.doRequest(request: router)
         return publisher
     }
 }
