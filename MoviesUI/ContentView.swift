@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var vm = CartMainVM(repo: Injector.mainServiceRepo)
+    
     var body: some View {
         Text("Hello, world!")
             .padding()
+            .onAppear {
+                self.vm.load()
+            }
     }
 }
 
