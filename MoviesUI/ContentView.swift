@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject var vm = CartMainVM(repo: Injector.mainServiceRepo)
+    @ObservedObject var vm = MovieListVM(repo: Injector.mainServiceRepo)
     
     var body: some View {
         Text("Hello, world!")
