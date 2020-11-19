@@ -10,7 +10,7 @@ import Combine
 
 protocol MainServicesRepoType {
     
-    func getCountriesWithCities() -> AnyPublisher<CountriesWithCitiesResponse, APIError>
+    func getCountriesWithCities() -> AnyPublisher<MovieResponse, APIError>
 }
 
 final class MainServicesRepo: MainServicesRepoType {
@@ -23,7 +23,7 @@ final class MainServicesRepo: MainServicesRepoType {
         self.remoteDS = remoteDS
     }
 
-    func getCountriesWithCities() -> AnyPublisher<CountriesWithCitiesResponse, APIError> {
+    func getCountriesWithCities() -> AnyPublisher<MovieResponse, APIError> {
         return self.remoteDS.getCountriesWithCities()
     }
 }
