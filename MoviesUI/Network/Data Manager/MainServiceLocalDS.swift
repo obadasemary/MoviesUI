@@ -16,7 +16,7 @@ class MainServiceLocalDS: MainServicesRepoType {
         self.context = context
     }
 
-    func getCountriesWithCities() -> AnyPublisher<CountriesWithCitiesResponse, APIError> {
+    func getCountriesWithCities() -> AnyPublisher<MovieResponse, APIError> {
         return Empty().eraseToAnyPublisher()
     }
 }
