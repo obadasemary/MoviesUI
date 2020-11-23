@@ -10,11 +10,12 @@ import Foundation
 func headers() -> [String: String] {
     
     var headers = [String: String]()
+    
     headers["Content-Type"] = "application/json"
     headers["Accept"] = "application/json"
-//    headers["X-Authorization"] = AuthorizationDataManager().getBearerToken()
-//    headers["X-Lang"] = UserManager.shared.getLanguage().rawValue
+    headers["X-OS-Name"] = "ios"
+    headers["User-Agent"] = "iOSMobileApp"
+    headers["Cache-Control"] = "no-cache"
     
-    //headers["Accept-Language"] = UserManager.shared.getLanguage().rawValue
     return headers
 }
