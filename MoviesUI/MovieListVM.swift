@@ -13,7 +13,7 @@ class MovieListVM: ObservableObject {
     
 //    var movieListVM = MovieListVM(repo: Injector.mainServiceRepo)
     let repo: MainServicesRepoType
-    @Published var movieResponse: MovieResponse?
+    @Published var movieResponse: MovieListResponse?
     private var cancellables: Set<AnyCancellable> = []
     
     init(repo: MainServicesRepoType) {
@@ -22,7 +22,7 @@ class MovieListVM: ObservableObject {
     
     func load() {
         
-        self.repo.getCountriesWithCities()
+        self.repo.getTopRatedMovieList()
             .handleEvents(receiveSubscription: { (sub) in
                 print("sub", sub)
             }, receiveOutput: { (output) in
