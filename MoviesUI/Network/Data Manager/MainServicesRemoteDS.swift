@@ -15,11 +15,18 @@ class MainServicesRemoteDS: MainServicesRepoType {
     init(context: RemoteContextRequestsProtocol) {
         self.context = context
     }
-
-    func getCountriesWithCities() -> AnyPublisher<MovieResponse, APIError> {
-        let params = [URLQueryItem(name: "s", value: "spiderman"), URLQueryItem(name: "apikey", value: "a22cefd9")]
-        let router = Router.getMovieList.get(params: "", httpHeaders: headers(), queryItems: params)
-        let publisher: AnyPublisher<MovieResponse, APIError> = context.doRequest(request: router)
+    
+    func getTopRatedMovieList() -> AnyPublisher<MovieListResponse, APIError> {
+        let params = [URLQueryItem(name: "api_key", value: apiURLConstants.apiKey)]
+        let router = Router.getTopRatedMovieList.get(params: "", httpHeaders: headers(), queryItems: params)
+        let publisher: AnyPublisher<MovieListResponse, APIError> = context.doRequest(request: router)
         return publisher
     }
+
+//    func getCountriesWithCities() -> AnyPublisher<MovieResponse, APIError> {
+//        let params = [URLQueryItem(name: "s", value: "spiderman"), URLQueryItem(name: "apikey", value: "a22cefd9")]
+//        let router = Router.getMovieList.get(params: "", httpHeaders: headers(), queryItems: params)
+//        let publisher: AnyPublisher<MovieResponse, APIError> = context.doRequest(request: router)
+//        return publisher
+//    }
 }
