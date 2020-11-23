@@ -23,6 +23,12 @@ struct Constants {
 //    Constants.pathS + search + Constants.apiKeyString + Constants.API_KEY
 }
 
+var defaultUrlParams: [String: String] {
+    return [
+        "api_key": "44258121c0a1dbc3f3859f7f4b32bb07"
+    ]
+}
+
 enum apiURLConstants {
     
     static let apiURL = "https://api.themoviedb.org/3"
