@@ -7,20 +7,20 @@
 
 import Foundation
 
-struct Movie: Decodable {
-    
-    let title: String
-    let year: String
-    let imdbID: String
-    let type: String
-    let poster: String
-    
-    private enum CodingKeys: String, CodingKey {
-        
-        case title = "Title"
-        case poster = "Poster"
-        case year = "Year"
-        case type = "Type"
-        case imdbID = "imdbID"
-    }
-}
+//struct Movie: Decodable {
+//    
+//    let title: String
+//    let year: String
+//    let imdbID: String
+//    let type: String
+//    let poster: String
+//    
+//    private enum CodingKeys: String, CodingKey {
+//        
+//        case title = "Title"
+//        case poster = "Poster"
+//        case year = "Year"
+//        case type = "Type"
+//        case imdbID = "imdbID"
+//    }
+//}
