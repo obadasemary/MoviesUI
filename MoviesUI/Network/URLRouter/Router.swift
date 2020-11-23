@@ -23,21 +23,27 @@ struct Constants {
 //    Constants.pathS + search + Constants.apiKeyString + Constants.API_KEY
 }
 
+enum apiURLConstants {
+    
+    static let apiURL = "https://api.themoviedb.org/3"
+    static let apiKey = "44258121c0a1dbc3f3859f7f4b32bb07"
+}
+
 
 struct Router: URLRouter {
     
     static var basePath: String {
-//        return "https://drama-spares.com/wp-json/v1/"
-        return "http://www.omdbapi.com"
+//        return "http://www.omdbapi.com"
+        return apiURLConstants.apiURL
+    }
+    
+    struct getTopRatedMovieList: Readable {
+        var urlParams: String!
+        var route: String = "movie/top_rated"
     }
     
     struct getMovieList: Readable {
         var urlParams: String!
         var route: String = ""
     }
- 
-//    struct getCountriesWithCities: Readable {
-//        var urlParams: String!
-//        var route: String = "cities"
-//    }
 }
