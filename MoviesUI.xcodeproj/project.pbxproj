@@ -46,6 +46,7 @@
 		AFA61627257F141000CCEE8C /* MoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA61626257F141000CCEE8C /* MoviesView.swift */; };
 		AFA61630257F16DC00CCEE8C /* KFImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFA6162F257F16DC00CCEE8C /* KFImage.swift */; };
 		AFA61640257F183300CCEE8C /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = AFA6163F257F183300CCEE8C /* KingfisherSwiftUI */; };
+		AFF08CC825807596001139AB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF08CC725807596001139AB /* LoadingView.swift */; };
 		AFF69A7F258022360029D473 /* AsyncContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF69A7E258022360029D473 /* AsyncContentView.swift */; };
 		AFF69A84258022760029D473 /* UIKitActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF69A83258022760029D473 /* UIKitActivityIndicator.swift */; };
 		B29CC0DB5EF1ADABCFA60E41 /* Pods_MoviesUI_MoviesUIUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95FA334E79FAC2045302A4B /* Pods_MoviesUI_MoviesUIUITests.framework */; };
@@ -117,6 +118,7 @@
 		AFA61621257F13F600CCEE8C /* topRatedMovieListResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = topRatedMovieListResponse.json; sourceTree = "<group>"; };
 		AFA61626257F141000CCEE8C /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
 		AFA6162F257F16DC00CCEE8C /* KFImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KFImage.swift; sourceTree = "<group>"; };
+		AFF08CC725807596001139AB /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		AFF69A7E258022360029D473 /* AsyncContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncContentView.swift; sourceTree = "<group>"; };
 		AFF69A83258022760029D473 /* UIKitActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitActivityIndicator.swift; sourceTree = "<group>"; };
 		B104F39A8D923E74FC5DDD56 /* Pods_MoviesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -416,6 +418,7 @@
 			children = (
 				AFA6162F257F16DC00CCEE8C /* KFImage.swift */,
 				AFF69A83258022760029D473 /* UIKitActivityIndicator.swift */,
+				AFF08CC725807596001139AB /* LoadingView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 				AF54F1EF2564CF3700BB9C42 /* AuthorizationDataManager.swift in Sources */,
 				AF54F1DE2564CE3300BB9C42 /* SessionManager.swift in Sources */,
 				AF54F1AB2564CB9D00BB9C42 /* MainServicesRemoteDS.swift in Sources */,
+				AFF08CC825807596001139AB /* LoadingView.swift in Sources */,
 				AFF69A84258022760029D473 /* UIKitActivityIndicator.swift in Sources */,
 				AFA6161A257F138200CCEE8C /* CodableBundleExtension.swift in Sources */,
 				AF54F1B82564CC8800BB9C42 /* LocalContext.swift in Sources */,
