@@ -13,8 +13,8 @@ class URLBuilder {
         static let imageBaseUrl = "https://image.tmdb.org/t/p/w"
     }
 
-    static func imageUrl(path: String, width: Int = 500) -> URL? {
+    static func imageUrl(path: String, width: Int = 500) -> String? {
 
-        return URL(string: "\(Constants.imageBaseUrl)\(width)\(path)")
+        return "\(Constants.imageBaseUrl)\(width)\(path)"
     }
 }
