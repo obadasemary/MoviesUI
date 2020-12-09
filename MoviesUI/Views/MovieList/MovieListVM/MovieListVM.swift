@@ -21,7 +21,7 @@ class MovieListVM: ObservableObject {
     @Published var topRatedMovies: [Movie] = []
     
     var totalPages: Int = 0
-    var page: Int = 403
+    var page: Int = 1
     var movieListFull = false
     @Published var isLoadingPage = false
     private var canLoadMorePages = true
@@ -29,11 +29,6 @@ class MovieListVM: ObservableObject {
     init(repo: MainServicesRepoType) {
         self.repo = repo
     }
-    
-    //    func load() {
-    //
-    //        getTopRatedMovieList()
-    //    }
     
     func loadMoreContentIfNeeded(currentItem item: Movie?) {
         guard let item = item else {
@@ -87,15 +82,7 @@ class MovieListVM: ObservableObject {
                 self.movieResponse = model
                 self.topRatedMovies.append(contentsOf: model.results ?? [])
                 self.totalPages = model.totalPages ?? 0
-//                self.canLoadMorePages =  model.totalPages
                 self.canLoadMorePages = self.page <= self.totalPages
-//                if self.totalPages <= self.page {
-//                    self.canLoadMorePages = false
-//                }
-                
-//                if self.topRatedMovies.count < self.totalPages || self.topRatedMovies.count == 0 {
-//                    self.movieListFull = true
-//                }
                 
             }.store(in: &cancellables)
     }
