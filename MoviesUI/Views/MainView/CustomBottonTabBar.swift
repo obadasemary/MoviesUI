@@ -12,7 +12,6 @@ struct CustomBottonTabBar: View {
     @Binding var currentTab: CustomBottonTabBarTabs
     
     var tabs: [CustomBottonTabBarTabs]
-    var darkYelloColor: Color = Color(red: 255 / 255, green: 175 / 255, blue: 2 / 255)
     
     var body: some View {
         HStack {
@@ -28,12 +27,13 @@ struct CustomBottonTabBar: View {
                         .frame(width: 26, height: 26, alignment: .center)
                         .padding()
                         .background(
-                            currentTab == tab ? darkYelloColor : Color.pink
+                            currentTab == tab ? Color.accentColor : Color.black
                         )
                         .frame(width: 46, height: 46, alignment: .center)
                         .cornerRadius(8)
                         .frame(maxWidth: .infinity)
                 })
+                .padding()
             }
         }
         .frame(width: UIScreen.main.bounds.width - 20, height: 72, alignment: .center)
