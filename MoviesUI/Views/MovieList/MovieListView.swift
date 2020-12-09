@@ -24,14 +24,22 @@ struct MovieListView: View {
                     }
                 }
             }
-            
-//            List(vm.topRatedMovies) { movie in
-//                MovieView(movie: movie)
-//                    .onAppear {
-//                        self.vm.loadMoreContentIfNeeded(currentItem: movie)
-//                    }
-//            }
             .navigationBarTitle("Movies", displayMode: .large)
+            
+            if vm.isLoadingPage {
+//                ProgressView()
+//                UIKitActivityIndicator(isAnimating: .constant(true), style: .medium)
+//                    .configure {
+//                        $0.color = UIColor.orange
+//                    }
+                LoadingView()
+            }
+            //            List(vm.topRatedMovies) { movie in
+            //                MovieView(movie: movie)
+            //                    .onAppear {
+            //                        self.vm.loadMoreContentIfNeeded(currentItem: movie)
+            //                    }
+            //            }
         }
         .onAppear {
             self.vm.getTopRatedMovieList()
