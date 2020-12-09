@@ -9,10 +9,12 @@ import Foundation
 import Alamofire
 
 class Injector {
+    
     private static var depenendecyResolver: DependencyResolver {
 //        return DependencyResolver(token: AuthorizationDataManager().getBearerToken())
         return DependencyResolver()
     }
+    
     static var mainServiceRepo: MainServicesRepoType = MainServicesRepo(
         localDS: depenendecyResolver.getMainServicesLocalDS(),
         remoteDS: depenendecyResolver.getMainServicesRemoteDS()
