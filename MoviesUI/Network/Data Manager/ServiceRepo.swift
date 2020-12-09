@@ -10,8 +10,10 @@ import Combine
 
 protocol MainServicesRepoType {
     
-//    func getCountriesWithCities() -> AnyPublisher<MovieResponse, APIError>
-    func getTopRatedMovieList() -> AnyPublisher<MovieListResponse, APIError>
+    func getTopRatedMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError>
+    func getUpcomingMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError>
+    func getNowPlayingMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError>
+    func getPopularMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError>
 }
 
 final class MainServicesRepo: MainServicesRepoType {
@@ -24,11 +26,19 @@ final class MainServicesRepo: MainServicesRepoType {
         self.remoteDS = remoteDS
     }
     
-    func getTopRatedMovieList() -> AnyPublisher<MovieListResponse, APIError> {
-        return self.remoteDS.getTopRatedMovieList()
+    func getTopRatedMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return self.remoteDS.getTopRatedMovieList(page: page)
     }
-
-//    func getCountriesWithCities() -> AnyPublisher<MovieResponse, APIError> {
-//        return self.remoteDS.getCountriesWithCities()
-//    }
+    
+    func getUpcomingMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return self.remoteDS.getUpcomingMovieList(page: page)
+    }
+    
+    func getNowPlayingMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return self.remoteDS.getNowPlayingMovieList(page: page)
+    }
+    
+    func getPopularMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return self.remoteDS.getPopularMovieList(page: page)
+    }
 }
