@@ -26,14 +26,14 @@ struct MovieListView: View {
             }
             .navigationBarTitle("Movies", displayMode: .large)
             
-            if vm.isLoadingPage {
-//                ProgressView()
-//                UIKitActivityIndicator(isAnimating: .constant(true), style: .medium)
-//                    .configure {
-//                        $0.color = UIColor.orange
-//                    }
-                LoadingView()
-            }
+//            if vm.isLoadingPage {
+////                ProgressView()
+////                UIKitActivityIndicator(isAnimating: .constant(true), style: .medium)
+////                    .configure {
+////                        $0.color = UIColor.orange
+////                    }
+//                LoadingView()
+//            }
             //            List(vm.topRatedMovies) { movie in
             //                MovieView(movie: movie)
             //                    .onAppear {
