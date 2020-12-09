@@ -39,7 +39,6 @@ enum apiURLConstants {
 struct Router: URLRouter {
     
     static var basePath: String {
-//        return "http://www.omdbapi.com"
         return apiURLConstants.apiURL
     }
     
@@ -48,8 +47,18 @@ struct Router: URLRouter {
         var route: String = "movie/top_rated"
     }
     
-    struct getMovieList: Readable {
+    struct getUpcomingMovieList: Readable {
         var urlParams: String!
-        var route: String = ""
+        var route: String = "movie/upcoming"
+    }
+    
+    struct getNowPlayingMovieList: Readable {
+        var urlParams: String!
+        var route: String = "movie/now_playing"
+    }
+    
+    struct getPopularMovieList: Readable {
+        var urlParams: String!
+        var route: String = "movie/popular"
     }
 }
