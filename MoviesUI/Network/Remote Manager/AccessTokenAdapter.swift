@@ -11,7 +11,7 @@ import Alamofire
 class AccessTokenAdapter: RequestInterceptor {
     
     func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
-        var urlRequest = urlRequest
+        let urlRequest = urlRequest
 //        if let token = AuthorizationDataManager().getBearerToken() {
 //            urlRequest.setValue(token, forHTTPHeaderField: "X-Authorization")
 //        }
