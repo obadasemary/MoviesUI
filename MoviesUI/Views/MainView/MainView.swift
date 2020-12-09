@@ -12,30 +12,51 @@ struct MainView: View {
     @State private var currentTab: CustomBottonTabBarTabs = .movies
     
     var body: some View {
-        ZStack {
-            Color.white
-            VStack {
-                
-                Spacer()
-                
-                switch currentTab {
-                case .movies:
-                    MovieListView()
-                case .heart:
-                    ProfileView()
-                case .person:
-                    WishListView()
-                default:
-                    EmptyView()
+        
+        TabView {
+            MovieListView()
+                .tabItem {
+                    Image(systemName: "square.grid.2x2")
+                    Text("Browse")
                 }
-                
-                Spacer()
-                
-                CustomBottonTabBar(currentTab: $currentTab, tabs: [.movies, .heart, .person])
-            }
-            .padding(.bottom, 40)
+            
+            WishListView()
+                .tabItem {
+                    Image(systemName: "play.rectangle")
+                    Text("Watch")
+                }
+            
+            ProfileView()
+                .tabItem {
+                    Image(systemName: CustomBottonTabBarTabs.person.rawValue)
+                    Text("Profile")
+                }
         }
-        .edgesIgnoringSafeArea(.all)
+        
+//        ZStack {
+//            Color.black
+//            VStack {
+//
+//                Spacer()
+//
+//                switch currentTab {
+//                case .movies:
+//                    MovieListView()
+//                case .heart:
+//                    WishListView()
+//                case .person:
+//                    ProfileView()
+//                default:
+//                    EmptyView()
+//                }
+//
+//                Spacer()
+//
+//                CustomBottonTabBar(currentTab: $currentTab, tabs: [.movies, .heart, .person])
+//            }
+//            .padding(.bottom, 40)
+//        }
+//        .edgesIgnoringSafeArea(.all)
     }
 }
 
