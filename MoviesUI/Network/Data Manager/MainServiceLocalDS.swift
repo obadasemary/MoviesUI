@@ -16,11 +16,19 @@ class MainServiceLocalDS: MainServicesRepoType {
         self.context = context
     }
     
-    func getTopRatedMovieList() -> AnyPublisher<MovieListResponse, APIError> {
+    func getTopRatedMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError> {
         return Empty().eraseToAnyPublisher()
     }
-
-//    func getCountriesWithCities() -> AnyPublisher<MovieResponse, APIError> {
-//        return Empty().eraseToAnyPublisher()
-//    }
+    
+    func getUpcomingMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
+    
+    func getNowPlayingMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
+    
+    func getPopularMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
 }
