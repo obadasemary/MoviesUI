@@ -76,11 +76,31 @@ class MainServicesRemoteDS: MainServicesRepoType {
         let publisher: AnyPublisher<MovieListResponse, APIError> = context.doRequest(request: router)
         return publisher
     }
-}
-
-extension URLComponents {
     
-    mutating func setQueryItems(with parameters: [String: String]) {
-        self.queryItems = parameters.map { URLQueryItem(name: $0.key, value: $0.value) }
+    func getMovieDetails(movieId: Int) -> AnyPublisher<Movie, APIError> {
+        
+        urlComponents.setQueryItems(with: defaultUrlParams)
+
+        let router = Router.getMovieDetails.get(params: "\(movieId)", httpHeaders: headers(), queryItems: urlComponents.queryItems)
+        let publisher: AnyPublisher<Movie, APIError> = context.doRequest(request: router)
+        return publisher
+    }
+    
+    func getMovieGallery(movieId: Int) -> AnyPublisher<MovieGallery, APIError> {
+        
+        urlComponents.setQueryItems(with: defaultUrlParams)
+
+        let router = Router.getMovieDetails.get(params: "\(movieId)/images", httpHeaders: headers(), queryItems: urlComponents.queryItems)
+        let publisher: AnyPublisher<MovieGallery, APIError> = context.doRequest(request: router)
+        return publisher
+    }
+    
+    func getRecommendationsMovieList(movieId: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        
+        urlComponents.setQueryItems(with: defaultUrlParams)
+
+        let router = Router.getMovieDetails.get(params: "\(movieId)/recommendations", httpHeaders: headers(), queryItems: urlComponents.queryItems)
+        let publisher: AnyPublisher<MovieListResponse, APIError> = context.doRequest(request: router)
+        return publisher
     }
 }
