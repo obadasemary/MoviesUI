@@ -61,4 +61,9 @@ struct Router: URLRouter {
         var urlParams: String!
         var route: String = "movie/popular"
     }
+    
+    struct getMovieDetails: Readable {
+        var urlParams: String!
+        var route: String = "movie"
+    }
 }
