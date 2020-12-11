@@ -14,6 +14,9 @@ protocol MainServicesRepoType {
     func getUpcomingMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError>
     func getNowPlayingMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError>
     func getPopularMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError>
+    func getMovieDetails(movieId: Int) -> AnyPublisher<Movie, APIError>
+    func getMovieGallery(movieId: Int) -> AnyPublisher<MovieGallery, APIError>
+    func getRecommendationsMovieList(movieId: Int) -> AnyPublisher<MovieListResponse, APIError>
 }
 
 final class MainServicesRepo: MainServicesRepoType {
@@ -40,5 +43,17 @@ final class MainServicesRepo: MainServicesRepoType {
     
     func getPopularMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError> {
         return self.remoteDS.getPopularMovieList(page: page)
+    }
+    
+    func getMovieDetails(movieId: Int) -> AnyPublisher<Movie, APIError> {
+        return self.remoteDS.getMovieDetails(movieId: movieId)
+    }
+    
+    func getMovieGallery(movieId: Int) -> AnyPublisher<MovieGallery, APIError> {
+        return self.remoteDS.getMovieGallery(movieId: movieId)
+    }
+    
+    func getRecommendationsMovieList(movieId: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return self.remoteDS.getRecommendationsMovieList(movieId: movieId)
     }
 }
