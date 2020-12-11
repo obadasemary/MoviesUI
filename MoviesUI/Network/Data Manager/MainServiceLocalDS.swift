@@ -31,4 +31,16 @@ class MainServiceLocalDS: MainServicesRepoType {
     func getPopularMovieList(page: Int) -> AnyPublisher<MovieListResponse, APIError> {
         return Empty().eraseToAnyPublisher()
     }
+    
+    func getMovieDetails(movieId: Int) -> AnyPublisher<Movie, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
+    
+    func getMovieGallery(movieId: Int) -> AnyPublisher<MovieGallery, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
+    
+    func getRecommendationsMovieList(movieId: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
 }
