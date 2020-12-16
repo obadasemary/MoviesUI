@@ -43,4 +43,20 @@ class MainServiceLocalDS: MainServicesRepoType {
     func getRecommendationsMovieList(movieId: Int) -> AnyPublisher<MovieListResponse, APIError> {
         return Empty().eraseToAnyPublisher()
     }
+    
+    func search(query: String, page: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
+    
+    func createRequestToken() -> AnyPublisher<TokenResponse, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
+    
+    func createSessionWithLogin(username: String, password: String, requestToken: String) -> AnyPublisher<TokenResponse, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
+    
+    func createSession(requestToken: String) -> AnyPublisher<CreateSessionResponse, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
 }
