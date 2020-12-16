@@ -103,4 +103,55 @@ class MainServicesRemoteDS: MainServicesRepoType {
         let publisher: AnyPublisher<MovieListResponse, APIError> = context.doRequest(request: router)
         return publisher
     }
+    
+    func search(query: String, page: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        
+        let newKeyValues = [
+            "query": query,
+            "page": String(page)
+        ]
+        
+        let parameters = defaultUrlParams.merging(newKeyValues) { (current, _) in current }
+        urlComponents.setQueryItems(with: parameters)
+
+        let router = Router.search.get(params: "", httpHeaders: headers(), queryItems: urlComponents.queryItems)
+        let publisher: AnyPublisher<MovieListResponse, APIError> = context.doRequest(request: router)
+        return publisher
+    }
+    
+    func createRequestToken() -> AnyPublisher<TokenResponse, APIError> {
+        
+        urlComponents.setQueryItems(with: defaultUrlParams)
+
+        let router = Router.createRequestToken.get(params: "", httpHeaders: headers(), queryItems: urlComponents.queryItems)
+        let publisher: AnyPublisher<TokenResponse, APIError> = context.doRequest(request: router)
+        return publisher
+    }
+    
+    func createSessionWithLogin(username: String, password: String, requestToken: String) -> AnyPublisher<TokenResponse, APIError> {
+        
+        urlComponents.setQueryItems(with: defaultUrlParams)
+        
+        var parmameters = [String: String]()
+        
+        parmameters["username"] = username
+        parmameters["password"] = password
+        parmameters["request_token"] = requestToken
+        
+        let router = Router.createSessionWithLogin.create(parameters: parmameters, httpHeaders: headers(), queryItems: urlComponents.queryItems)
+        let publisher: AnyPublisher<TokenResponse, APIError> = context.doRequest(request: router)
+        return publisher
+    }
+    
+    func createSession(requestToken: String) -> AnyPublisher<CreateSessionResponse, APIError> {
+        
+        urlComponents.setQueryItems(with: defaultUrlParams)
+        
+        var parmameters = [String: String]()
+        parmameters["request_token"] = requestToken
+        
+        let router = Router.createSession.create(parameters: parmameters, httpHeaders: headers(), queryItems: urlComponents.queryItems)
+        let publisher: AnyPublisher<CreateSessionResponse, APIError> = context.doRequest(request: router)
+        return publisher
+    }
 }
