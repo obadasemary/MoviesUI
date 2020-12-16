@@ -40,10 +40,12 @@ struct AsyncContentView<Source: LoadableObject, Content: View>: View {
 
     var body: some View {
         switch source.state {
-        case .idle, .loading:
+        case .idle:
+            Color.clear.onAppear(perform: source.load)
+        case .loading:
             UIKitActivityIndicator(isAnimating: .constant(true), style: .large)
                 .configure {
-                    $0.color = UIColor.orange
+                    $0.color = UIColor(Color.accentColor)
                 }.onAppear(perform: source.load)
         case .failed(let error):
             Text(error.localizedDescription)
