@@ -17,6 +17,10 @@ protocol MainServicesRepoType {
     func getMovieDetails(movieId: Int) -> AnyPublisher<Movie, APIError>
     func getMovieGallery(movieId: Int) -> AnyPublisher<MovieGallery, APIError>
     func getRecommendationsMovieList(movieId: Int) -> AnyPublisher<MovieListResponse, APIError>
+    func search(query: String, page: Int) -> AnyPublisher<MovieListResponse, APIError>
+    func createRequestToken() -> AnyPublisher<TokenResponse, APIError>
+    func createSessionWithLogin(username: String, password: String, requestToken: String) -> AnyPublisher<TokenResponse, APIError>
+    func createSession(requestToken: String) -> AnyPublisher<CreateSessionResponse, APIError>
 }
 
 final class MainServicesRepo: MainServicesRepoType {
@@ -55,5 +59,21 @@ final class MainServicesRepo: MainServicesRepoType {
     
     func getRecommendationsMovieList(movieId: Int) -> AnyPublisher<MovieListResponse, APIError> {
         return self.remoteDS.getRecommendationsMovieList(movieId: movieId)
+    }
+    
+    func search(query: String, page: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return self.remoteDS.search(query: query, page: page)
+    }
+    
+    func createRequestToken() -> AnyPublisher<TokenResponse, APIError> {
+        return self.remoteDS.createRequestToken()
+    }
+    
+    func createSessionWithLogin(username: String, password: String, requestToken: String) -> AnyPublisher<TokenResponse, APIError> {
+        return self.remoteDS.createSessionWithLogin(username: username, password: password, requestToken: requestToken)
+    }
+    
+    func createSession(requestToken: String) -> AnyPublisher<CreateSessionResponse, APIError> {
+        return self.remoteDS.createSession(requestToken: requestToken)
     }
 }
