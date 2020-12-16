@@ -8,6 +8,7 @@ target 'MoviesUI' do
   # Pods for MoviesUI
   
   pod 'Alamofire'
+  pod 'SwiftMessages'
 
   target 'MoviesUITests' do
     inherit! :search_paths
