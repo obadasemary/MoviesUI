@@ -119,6 +119,12 @@ extension Creatable where Self: Routable {
         return RequestConverter(method: .post, route: route, parameters: parameters, httpHeaders: httpHeaders)
     }
     
+    static func create(parameters: Parameters, httpHeaders: [String: String]? = nil, queryItems: [URLQueryItem]? = nil) -> RequestConverter {
+        let temp = Self.init()
+        let route = "\(temp.route)"
+        return RequestConverter(method: .post, route: route, parameters: parameters, httpHeaders: httpHeaders, queryItems: queryItems)
+    }
+    
     static func createNestedRoute(args: String..., bodyParameters: Parameters, childRoute: String? = nil, httpHeaders: [String: String]? = nil) -> RequestConverter {
         let temp = Self.init()
         var route: String = "\(temp.route)"
