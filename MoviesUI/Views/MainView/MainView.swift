@@ -20,6 +20,12 @@ struct MainView: View {
                     Text("Browse")
                 }
             
+            SearchView()
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
+                }
+            
             WishListView()
                 .tabItem {
                     Image(systemName: "play.rectangle")
