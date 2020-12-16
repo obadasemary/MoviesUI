@@ -66,4 +66,24 @@ struct Router: URLRouter {
         var urlParams: String!
         var route: String = "movie"
     }
+    
+    struct search: Readable {
+        var urlParams: String!
+        var route: String = "search/movie"
+    }
+    
+    struct createRequestToken: Readable {
+        var urlParams: String!
+        var route: String = "authentication/token/new"
+    }
+    
+    struct createSessionWithLogin: Creatable {
+        var urlParams: String!
+        var route: String = "authentication/token/validate_with_login"
+    }
+    
+    struct createSession: Creatable {
+        var urlParams: String!
+        var route: String = "authentication/session/new"
+    }
 }
