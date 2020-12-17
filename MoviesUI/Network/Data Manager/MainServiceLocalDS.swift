@@ -59,4 +59,24 @@ class MainServiceLocalDS: MainServicesRepoType {
     func createSession(requestToken: String) -> AnyPublisher<CreateSessionResponse, APIError> {
         return Empty().eraseToAnyPublisher()
     }
+    
+    func getAccountDetails(sessionId: String) -> AnyPublisher<ProfileResponse, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
+    
+    func getMovieWatchlist(page: Int, sessionId: String, accountId: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
+    
+    func getMovieFavoritelist(page: Int, sessionId: String, accountId: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
+    
+    func addMovieToWatchlist(movieId: Int, sessionId: String, accountId: Int) -> AnyPublisher<AddToListResponse, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
+    
+    func addMovieToFavoritelist(movieId: Int, sessionId: String, accountId: Int) -> AnyPublisher<AddToListResponse, APIError> {
+        return Empty().eraseToAnyPublisher()
+    }
 }
