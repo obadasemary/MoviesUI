@@ -7,18 +7,24 @@
 
 import SwiftUI
 
-struct MovieDetailsView: View {
+struct MovieDetailsView: View, SwifyMessagebale {
     
     @ObservedObject var vm = MovieDetailsVM(repo: Injector.mainServiceRepo)
+    @ObservedObject var addToListVM = AddToListVM(repo: Injector.mainServiceRepo)
     let movieId: Int
     
     var body: some View {
         ScrollView {
             VStack {
                 
-                kfImageView(url: URLBuilder.imageUrl(path: vm.movie?.posterPath ?? "wwemzKWzjKYJFfCeiB57q3r4Bcm.png") ?? "")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
+                ZStack {
+                    kfImageView(url: URLBuilder.imageUrl(path: vm.movie?.posterPath ?? "wwemzKWzjKYJFfCeiB57q3r4Bcm.png") ?? "")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                    
+                    UserScoreView(progress: CGFloat(vm.movie?.voteAverage ?? 0), boxSize: 70)
+                        .offset(x: UIScreen.main.bounds.width / 3.5 , y: 280)
+                }
                 
                 HStack {
                     VStack(alignment: .leading) {
@@ -79,6 +85,10 @@ struct MovieDetailsView: View {
                     RecommendationsMoviesView(movies: vm.recommendationsMovies)
                         .environmentObject(self.vm)
                 }
+                
+                AddToListView(movieId: movieId, movieName: self.vm.movie?.title ?? "", doWeNeedSpacer: true)
+                    .environmentObject(self.addToListVM)
+                    .padding()
                 
                 Spacer()
             }
