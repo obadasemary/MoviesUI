@@ -9,21 +9,33 @@ import SwiftUI
 
 struct RecommendationsMovieView: View {
     
+    @ObservedObject var addToListVM = AddToListVM(repo: Injector.mainServiceRepo)
     var movie: Movie
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
+            Spacer(minLength: 20)
+            
             kfImageView(url: URLBuilder.imageUrl(path: movie.backdropPath ?? "wwemzKWzjKYJFfCeiB57q3r4Bcm.png") ?? "")
                 .resizable()
                 .scaledToFit()
                 .frame(height: 200)
                 .cornerRadius(12)
             
-            Text(movie.title ?? "")
-                .font(.title3)
-                .fontWeight(.black)
-                .foregroundColor(.primary)
-                .lineLimit(3)
+            HStack(alignment: .center) {
+
+                VStack {
+                    Text(movie.title ?? "")
+                        .font(.title3)
+                        .fontWeight(.black)
+                        .foregroundColor(.primary)
+                        .lineLimit(nil)
+                }
+                
+                AddToListView(movieId: movie.id ?? 155, movieName: movie.title ?? "", doWeNeedSpacer: false)
+                    .environmentObject(self.addToListVM)
+                    .padding()
+            }
         }
     }
 }
