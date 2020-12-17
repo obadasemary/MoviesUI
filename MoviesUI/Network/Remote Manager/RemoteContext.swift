@@ -31,9 +31,15 @@ class RemoteContext: NSObject, RemoteContextRequestsProtocol {
         return self.sessionManager.session.request(request).validate()
             .publishDecodable(type: T.self)
             .tryMap { dataResponse -> T in
+                
                 if let model = dataResponse.value, dataResponse.response?.statusCode == 200 {
                     return model
                 }
+                
+                if let model = dataResponse.value, dataResponse.response?.statusCode == 201 {
+                    return model
+                }
+                
                 throw handleError(dataResponse: dataResponse.response, data: dataResponse.data)
             }
             .mapError { afError -> APIError in
