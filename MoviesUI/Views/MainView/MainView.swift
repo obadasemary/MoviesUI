@@ -9,29 +9,36 @@ import SwiftUI
 
 struct MainView: View {
     
-    @State private var currentTab: CustomBottonTabBarTabs = .movies
+    @State private var currentTab: CustomBottonTabBarTabs = .heart
     
     var body: some View {
         
         TabView {
+
             MovieListView()
                 .tabItem {
                     Image(systemName: "square.grid.2x2")
                     Text("Browse")
                 }
-            
+
             SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
                 }
-            
-            WishListView()
+
+            WatchListView()
                 .tabItem {
                     Image(systemName: "play.rectangle")
-                    Text("Watch")
+                    Text("Watchlist")
                 }
-            
+
+            FavoriteListView()
+                .tabItem {
+                    Image(systemName: "bolt.heart.fill")
+                    Text("Favoritelist")
+                }
+
             ProfileView()
                 .tabItem {
                     Image(systemName: CustomBottonTabBarTabs.person.rawValue)
@@ -49,7 +56,7 @@ struct MainView: View {
 //                case .movies:
 //                    MovieListView()
 //                case .heart:
-//                    WishListView()
+//                    WatchListView()
 //                case .person:
 //                    ProfileView()
 //                default:
