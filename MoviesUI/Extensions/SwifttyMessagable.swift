@@ -19,11 +19,11 @@ extension SwifyMessagebale {
         let warning = MessageView.viewFromNib(layout: .cardView)
 //        warning.bodyLabel?.font = .systemFont(ofSize: 20, weight: UIFont.Weight(rawValue: 20))
         warning.bodyLabel?.textAlignment = .right
-//        warning.configureTheme((isError ? Theme.error : Theme.success))
+        warning.configureTheme((isError ? Theme.error : Theme.success))
         
-        let backgroundColor = Color.white
-        let foregroundColor = Color.accentColor
-//        warning.configureTheme(backgroundColor: backgroundColor, foregroundColor: foregroundColor, iconImage: isError ? Icon.error.image : Icon.success.image)
+//        let backgroundColor = Color.white
+//        let foregroundColor = Color.accentColor
+        
         warning.configureDropShadow()
         warning.configureContent(title: "", body: body)
         warning.button?.isHidden = true
