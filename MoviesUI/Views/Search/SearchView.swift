@@ -15,7 +15,6 @@ struct SearchView: View {
     
     var body: some View {
         NavigationView {
-            
             VStack {
                 
                 HStack {
@@ -48,7 +47,7 @@ struct SearchView: View {
                 
                 AsyncContentView(source: vm) { _ in
                     ScrollView {
-                        LazyVStack {
+//                        LazyVStack {
                             SearchMoviesView(movies: vm.movies, queryMovieName: self.movieName)
                                 .environmentObject(self.vm)
                             
@@ -63,14 +62,14 @@ struct SearchView: View {
 //                                self.vm.moviesCanLoadMorePages = true
 //                                self.vm.loadMoreContentIfNeeded(currentItem: vm.movies.last, movieName: self.movieName)
 //                            }
-                        }
+//                        }
                     }
                 }
                 
                 Spacer()
             }
             
-            .navigationBarTitle("Movies", displayMode: .large)
+            .navigationBarTitle("Search", displayMode: .large)
         }
     }
 }
