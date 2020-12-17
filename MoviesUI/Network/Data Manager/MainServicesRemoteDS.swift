@@ -154,4 +154,92 @@ class MainServicesRemoteDS: MainServicesRepoType {
         let publisher: AnyPublisher<CreateSessionResponse, APIError> = context.doRequest(request: router)
         return publisher
     }
+    
+    func getAccountDetails(sessionId: String) -> AnyPublisher<ProfileResponse, APIError> {
+        
+        let newKeyValues = [
+            "session_id": sessionId
+        ]
+        
+        let parameters = defaultUrlParams.merging(newKeyValues) { (current, _) in current }
+        urlComponents.setQueryItems(with: parameters)
+
+        let router = Router.account.get(params: "", httpHeaders: headers(), queryItems: urlComponents.queryItems)
+        let publisher: AnyPublisher<ProfileResponse, APIError> = context.doRequest(request: router)
+        return publisher
+    }
+    
+    func getMovieWatchlist(page: Int, sessionId: String, accountId: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        
+        let newKeyValues = [
+            "language": "en",
+            "page": String(page),
+            "session_id": sessionId,
+            "sort_by": "created_at.desc"
+        ]
+        
+        let parameters = defaultUrlParams.merging(newKeyValues) { (current, _) in current }
+        urlComponents.setQueryItems(with: parameters)
+
+        let router = Router.account.get(params: "\(accountId)/watchlist/movies", httpHeaders: headers(), queryItems: urlComponents.queryItems)
+        let publisher: AnyPublisher<MovieListResponse, APIError> = context.doRequest(request: router)
+        return publisher
+    }
+    
+    func getMovieFavoritelist(page: Int, sessionId: String, accountId: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        
+        let newKeyValues = [
+            "language": "en",
+            "page": String(page),
+            "session_id": sessionId,
+            "sort_by": "created_at.desc"
+        ]
+        
+        let parameters = defaultUrlParams.merging(newKeyValues) { (current, _) in current }
+        urlComponents.setQueryItems(with: parameters)
+
+        let router = Router.account.get(params: "\(accountId)/favorite/movies", httpHeaders: headers(), queryItems: urlComponents.queryItems)
+        let publisher: AnyPublisher<MovieListResponse, APIError> = context.doRequest(request: router)
+        return publisher
+    }
+    
+    func addMovieToWatchlist(movieId: Int, sessionId: String, accountId: Int) -> AnyPublisher<AddToListResponse, APIError> {
+        
+        let newKeyValues = [
+            "session_id": sessionId
+        ]
+        
+        let parameters = defaultUrlParams.merging(newKeyValues) { (current, _) in current }
+        urlComponents.setQueryItems(with: parameters)
+        
+        var bodyParmameters = [String: Any]()
+        
+        bodyParmameters["media_type"] = "movie"
+        bodyParmameters["media_id"] = movieId
+        bodyParmameters["watchlist"] = true
+
+        let router = Router.account.createWithRouteParameter(params: "\(accountId)/watchlist", parameters: bodyParmameters, httpHeaders: headers(), queryItems: urlComponents.queryItems)
+        let publisher: AnyPublisher<AddToListResponse, APIError> = context.doRequest(request: router)
+        return publisher
+    }
+    
+    func addMovieToFavoritelist(movieId: Int, sessionId: String, accountId: Int) -> AnyPublisher<AddToListResponse, APIError> {
+        
+        let newKeyValues = [
+            "session_id": sessionId
+        ]
+        
+        let parameters = defaultUrlParams.merging(newKeyValues) { (current, _) in current }
+        urlComponents.setQueryItems(with: parameters)
+        
+        var bodyParmameters = [String: Any]()
+        
+        bodyParmameters["media_type"] = "movie"
+        bodyParmameters["media_id"] = movieId
+        bodyParmameters["favorite"] = true
+
+        let router = Router.account.createWithRouteParameter(params: "\(accountId)/favorite", parameters: bodyParmameters, httpHeaders: headers(), queryItems: urlComponents.queryItems)
+        let publisher: AnyPublisher<AddToListResponse, APIError> = context.doRequest(request: router)
+        return publisher
+    }
 }
