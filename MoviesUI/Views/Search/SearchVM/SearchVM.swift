@@ -35,15 +35,15 @@ class SearchVM: ObservableObject, LoadableObject {
     func loadMoreContentIfNeeded(currentItem item: Movie?, movieName: String) {
         
         guard let item = item else {
-//            search(movieName: movieName)
-            load()
+            search(movieName: movieName)
+//            load()
             return
         }
         
         let thresholdIndex = movies.index(movies.endIndex, offsetBy: -5)
         if movies.firstIndex(where: { $0.id == item.id }) == thresholdIndex {
-//            search(movieName: movieName)
-            load()
+            search(movieName: movieName)
+//            load()
         }
     }
     
