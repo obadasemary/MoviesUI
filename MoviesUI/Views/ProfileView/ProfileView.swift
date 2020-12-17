@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
+    @ObservedObject var vm = ProfileVM(repo: Injector.mainServiceRepo)
+    
     var body: some View {
         ScrollView {
             VStack {
                 
-                Image("avengers1")
+                kfImageView(url: URLBuilder.imageUrl(path: vm.profileResponse?.avatar?.tmdb?.avatarPath ?? "wwemzKWzjKYJFfCeiB57q3r4Bcm.png") ?? "")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .clipped()
@@ -26,23 +29,31 @@ struct ProfileView: View {
                     )
                     .padding()
                 
-                Text("Login")
-                    .foregroundColor(.primary)
-                    .font(.system(.largeTitle, design: .rounded))
-                    .bold()
-                    .padding()
-                
-                Text("Login")
-                    .foregroundColor(.secondary)
-                    .font(.system(.title, design: .rounded))
-                    .bold()
-                    .padding()
+                Group {
+                    
+                    VStack(alignment: .center) {
+                        Text(vm.profileResponse?.name ?? "")
+                            .foregroundColor(.primary)
+                            .font(.system(.title, design: .rounded))
+                            .bold()
+                        Text(vm.profileResponse?.username ?? "")
+                            .foregroundColor(.secondary)
+                            .font(.system(.title3, design: .rounded))
+                    }
+                    .layoutPriority(100)
+                    .padding(.horizontal)
+                }
                 
                 Spacer()
+                
+                Divider()
+                    .frame(height: 1)
+                    .background(Color.accentColor)
+                    .padding(.horizontal, 40)
             }
         }
         .onAppear {
-            AuthorizationDataManager.shared.getAuthorizationSession()
+            self.vm.getAccountDetails()
         }
     }
 }
