@@ -6,24 +6,24 @@
 //
 
 import Foundation
-import ProfileVM
+import Combine
 
-class LoginVM: ObservableObject {
+class ProfileVM: ObservableObject {
     
     let repo: MainServicesRepoType
     private var cancellables: Set<AnyCancellable> = []
     
-    @Published var tokenState = LoadingState<TokenResponse>.idle
-    @Published var tokenResponse: TokenResponse?
-    @Published var createSessionState = LoadingState<CreateSessionResponse>.idle
-    @Published var createSessionResponse: CreateSessionResponse?
-    
-    
-    @Published var username: String? = "Obada.semary"
-    @Published var password: String? = "Admin123"
+    @Published var profileState = LoadingState<ProfileResponse>.idle
+    @Published var profileResponse: ProfileResponse?
     
     init(repo: MainServicesRepoType) {
         self.repo = repo
     }
 
+    func getAccountDetails() {
+        
+        guard AuthorizationDataManager.shared.getAuthorizationSession() != nil else { return }
+        guard let profileResponse = AuthorizationDataManager.shared.getAuthorizationProfile() else { return }
+        self.profileResponse = profileResponse
+    }
 }
