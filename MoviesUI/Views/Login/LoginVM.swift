@@ -17,7 +17,8 @@ class LoginVM: ObservableObject {
     @Published var tokenResponse: TokenResponse?
     @Published var createSessionState = LoadingState<CreateSessionResponse>.idle
     @Published var createSessionResponse: CreateSessionResponse?
-    
+    @Published var profileState = LoadingState<ProfileResponse>.idle
+    @Published var profileResponse: ProfileResponse?
     
     @Published var username: String? = "Obada.semary"
     @Published var password: String? = "Admin123"
@@ -137,8 +138,49 @@ class LoginVM: ObservableObject {
             }.store(in: &cancellables)
     }
     
+    func getAccountDetails() {
+        
+        guard let sessionId = AuthorizationDataManager.shared.getAuthorizationSession() else { return }
+        
+        self.repo.getAccountDetails(sessionId: sessionId)
+            .handleEvents(receiveSubscription: { (sub) in
+                print("sub", sub)
+            }, receiveOutput: { (output) in
+                print("output getAccountDetails", output)
+            }, receiveCompletion: { (c) in
+                print("completion", c)
+            }, receiveCancel: {
+                print("cancel is recieved")
+            }, receiveRequest: { (request) in
+                print("request", request)
+            })
+            
+            .sink { (completion) in
+                switch completion {
+                case .finished: ()
+                    self.profileState = .idle
+                case .failure(let error):
+                    self.profileState = .failed(error)
+                }
+            } receiveValue: { [weak self] (model) in
+                
+                guard let self = self else { return }
+                
+                self.profileState = .loaded(model)
+                self.profileResponse = model
+                
+                self.saveAuthorizationProfile(model: model)
+                
+            }.store(in: &cancellables)
+    }
+    
     func saveSessionId(sessionId: String) {
         
         AuthorizationDataManager.shared.saveAuthorizationSession(sessionId: sessionId)
+    }
+    
+    func saveAuthorizationProfile(model: ProfileResponse) {
+        
+        AuthorizationDataManager.shared.saveAuthorizationProfile(model: model)
     }
 }
