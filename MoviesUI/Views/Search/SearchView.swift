@@ -29,8 +29,8 @@ struct SearchView: View {
                         self.vm.moviesCanLoadMorePages = true
                         self.vm.movies = []
                         self.vm.movieName = self.movieName
-                        self.vm.load()
-//                        search(movieName: self.movieName)
+//                        self.vm.load()
+                        self.vm.search(movieName: self.movieName)
                     }
                 }
                 .padding()
@@ -45,7 +45,7 @@ struct SearchView: View {
                 
                 Spacer()
                 
-                AsyncContentView(source: vm) { _ in
+//                AsyncContentView(source: vm) { _ in
                     ScrollView {
 //                        LazyVStack {
                             SearchMoviesView(movies: vm.movies, queryMovieName: self.movieName)
@@ -64,7 +64,7 @@ struct SearchView: View {
 //                            }
 //                        }
                     }
-                }
+//                }
                 
                 Spacer()
             }
