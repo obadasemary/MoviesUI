@@ -19,6 +19,9 @@ class MovieListVM: ObservableObject {
     @Published var nowPlayingMoviesResponse: MovieListResponse?
     @Published var popularMoviesResponse: MovieListResponse?
     
+    @Published var addToListState = LoadingState<AddToListResponse>.idle
+    @Published var addToListResponse: AddToListResponse?
+    
     @Published var topRatedMovies: [Movie] = []
     @Published var upcomingMovies: [Movie] = []
     @Published var nowPlayingMovies: [Movie] = []
