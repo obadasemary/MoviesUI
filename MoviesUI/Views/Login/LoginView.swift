@@ -10,7 +10,6 @@ import SwiftUI
 struct LoginView: View, SwifyMessagebale {
     
     @ObservedObject var vm = LoginVM(repo: Injector.mainServiceRepo)
-    //    @State private var tokenState = LoadingState<TokenResponse>.idle
     @State private var isPresented = false
     
     var body: some View {
@@ -91,7 +90,7 @@ struct LoginView: View, SwifyMessagebale {
             }
             .onReceive(self.vm.$tokenState) { value in
                 showSwiftMessage(state: value)
-                if case .loaded(let model) = value {
+                if case .loaded( _) = value {
                     self.vm.createSession()
                 } else {
                     showSwiftMessage(state: value)
@@ -99,7 +98,15 @@ struct LoginView: View, SwifyMessagebale {
             }
             .onReceive(self.vm.$createSessionState) { (value) in
                 showSwiftMessage(state: value)
-                if case .loaded(let model) = value {
+                if case .loaded( _) = value {
+                    self.vm.getAccountDetails()
+                } else {
+                    showSwiftMessage(state: value)
+                }
+            }
+            .onReceive(self.vm.$profileState) { (value) in
+                showSwiftMessage(state: value)
+                if case .loaded( _) = value {
                     self.isPresented.toggle()
                 } else {
                     showSwiftMessage(state: value)
