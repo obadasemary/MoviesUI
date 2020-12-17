@@ -6,8 +6,8 @@
 //
 //  Source of this file
 //  https://github.com/chaione/RoutableApp
-//  https://chaione.com/blog/routers-swift-protocol-oriented-1/
-//  https://chaione.com/blog/routers-swift-protocol-oriented-programming-pt-2/
+//  https://blog.chaione.com/blog/routers-swift-protocol-oriented-1
+//  https://blog.chaione.com/blog/routers-swift-protocol-oriented-programming-pt-2
 //  This version of RouterProtocol is changed than the author's version by adding httpHeaders
 
 import Alamofire
@@ -122,6 +122,15 @@ extension Creatable where Self: Routable {
     static func create(parameters: Parameters, httpHeaders: [String: String]? = nil, queryItems: [URLQueryItem]? = nil) -> RequestConverter {
         let temp = Self.init()
         let route = "\(temp.route)"
+        return RequestConverter(method: .post, route: route, parameters: parameters, httpHeaders: httpHeaders, queryItems: queryItems)
+    }
+    
+    static func createWithRouteParameter(params: String, parameters: Parameters, httpHeaders: [String: String]? = nil, queryItems: [URLQueryItem]? = nil) -> RequestConverter {
+        let temp = Self.init()
+        var route = "\(temp.route)"
+        if params.count > 0 {
+            route += "/\(params)"
+        }
         return RequestConverter(method: .post, route: route, parameters: parameters, httpHeaders: httpHeaders, queryItems: queryItems)
     }
     
