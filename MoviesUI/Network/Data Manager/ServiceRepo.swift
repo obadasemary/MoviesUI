@@ -21,6 +21,11 @@ protocol MainServicesRepoType {
     func createRequestToken() -> AnyPublisher<TokenResponse, APIError>
     func createSessionWithLogin(username: String, password: String, requestToken: String) -> AnyPublisher<TokenResponse, APIError>
     func createSession(requestToken: String) -> AnyPublisher<CreateSessionResponse, APIError>
+    func getAccountDetails(sessionId: String) -> AnyPublisher<ProfileResponse, APIError>
+    func getMovieWatchlist(page: Int, sessionId: String, accountId: Int) -> AnyPublisher<MovieListResponse, APIError>
+    func getMovieFavoritelist(page: Int, sessionId: String, accountId: Int) -> AnyPublisher<MovieListResponse, APIError>
+    func addMovieToWatchlist(movieId: Int, sessionId: String, accountId: Int) -> AnyPublisher<AddToListResponse, APIError>
+    func addMovieToFavoritelist(movieId: Int, sessionId: String, accountId: Int) -> AnyPublisher<AddToListResponse, APIError>
 }
 
 final class MainServicesRepo: MainServicesRepoType {
@@ -75,5 +80,25 @@ final class MainServicesRepo: MainServicesRepoType {
     
     func createSession(requestToken: String) -> AnyPublisher<CreateSessionResponse, APIError> {
         return self.remoteDS.createSession(requestToken: requestToken)
+    }
+    
+    func getAccountDetails(sessionId: String) -> AnyPublisher<ProfileResponse, APIError> {
+        return self.remoteDS.getAccountDetails(sessionId: sessionId)
+    }
+    
+    func getMovieWatchlist(page: Int, sessionId: String, accountId: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return self.remoteDS.getMovieWatchlist(page: page, sessionId: sessionId, accountId: accountId)
+    }
+    
+    func getMovieFavoritelist(page: Int, sessionId: String, accountId: Int) -> AnyPublisher<MovieListResponse, APIError> {
+        return self.remoteDS.getMovieFavoritelist(page: page, sessionId: sessionId, accountId: accountId)
+    }
+    
+    func addMovieToWatchlist(movieId: Int, sessionId: String, accountId: Int) -> AnyPublisher<AddToListResponse, APIError> {
+        return self.remoteDS.addMovieToWatchlist(movieId: movieId, sessionId: sessionId, accountId: accountId)
+    }
+    
+    func addMovieToFavoritelist(movieId: Int, sessionId: String, accountId: Int) -> AnyPublisher<AddToListResponse, APIError> {
+        return self.remoteDS.addMovieToFavoritelist(movieId: movieId, sessionId: sessionId, accountId: accountId)
     }
 }
