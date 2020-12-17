@@ -86,4 +86,9 @@ struct Router: URLRouter {
         var urlParams: String!
         var route: String = "authentication/session/new"
     }
+    
+    struct account: Readable, Creatable {
+        var urlParams: String!
+        var route: String = "account"
+    }
 }
