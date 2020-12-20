@@ -138,6 +138,42 @@ class LoginVM: ObservableObject {
             }.store(in: &cancellables)
     }
     
+    func login(fUsername: String, fPassword: String) {
+        
+        guard let requestToken = tokenResponse?.requestToken  else { return }
+        
+        print(fUsername, fPassword, requestToken)
+        
+        self.repo.createSessionWithLogin(username: fUsername, password: fPassword, requestToken: requestToken)
+            .handleEvents(receiveSubscription: { (sub) in
+                print("sub", sub)
+            }, receiveOutput: { (output) in
+                print("output createSessionWithLogin", output)
+            }, receiveCompletion: { (c) in
+                print("completion", c)
+            }, receiveCancel: {
+                print("cancel is recieved")
+            }, receiveRequest: { (request) in
+                print("request", request)
+            })
+            
+            .sink { (completion) in
+                switch completion {
+                case .finished: ()
+                    self.tokenState = .idle
+                case .failure(let error):
+                    self.tokenState = .failed(error)
+                }
+            } receiveValue: { [weak self] (model) in
+                
+                guard let self = self else { return }
+                
+                self.tokenState = .loaded(model)
+                self.tokenResponse = model
+                
+            }.store(in: &cancellables)
+    }
+    
     func getAccountDetails() {
         
         guard let sessionId = AuthorizationDataManager.shared.getAuthorizationSession() else { return }
