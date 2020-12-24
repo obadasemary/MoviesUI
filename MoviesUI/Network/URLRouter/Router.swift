@@ -6,9 +6,9 @@
 //
 //  Source of this file
 //  https://github.com/chaione/RoutableApp
-//  https://chaione.com/blog/routers-swift-protocol-oriented-1/
-//  https://chaione.com/blog/routers-swift-protocol-oriented-programming-pt-2/
-//  https://drama-spares.com/rest-api/docs/
+//  https://blog.chaione.com/blog/routers-swift-protocol-oriented-1
+//  https://blog.chaione.com/blog/routers-swift-protocol-oriented-programming-pt-2
+
 import Foundation
 
 struct Constants {
