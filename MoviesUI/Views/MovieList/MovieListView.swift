@@ -34,7 +34,7 @@ struct MovieListView: View {
                 ScrollView {
                     VStack {
                         
-                        switch self.vm.currentTab {
+                        switch vm.currentTab {
                         
                         case .topRated:
                             MoviesView(movies: vm.topRatedMovies, currentTab: .topRated)
