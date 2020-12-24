@@ -44,7 +44,7 @@ struct AddToListView: View, SwifyMessagebale {
             showSwiftMessage(state: value)
             if case .loaded(let model) = value {
                 if model.statusCode == 1 {
-                    
+
                     showSwiftMessage(state: value, showMessage: "\(movieName) Added successfully to your Favorite List")
                 } else {
                     showSwiftMessage(state: value, showMessage: model.statusMessage)
