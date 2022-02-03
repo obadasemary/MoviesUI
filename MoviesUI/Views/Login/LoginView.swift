@@ -22,7 +22,7 @@ struct LoginView: View, SwifyMessagebale {
                     .bold()
                     .padding()
                 
-                Image("avengers1")
+                Image("avengers")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .clipped()
