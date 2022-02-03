@@ -7,8 +7,11 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 class LoginVM: ObservableObject {
+
+    @Environment(\.openURL) var openURL
     
     let repo: MainServicesRepoType
     private var cancellables: Set<AnyCancellable> = []
@@ -20,8 +23,12 @@ class LoginVM: ObservableObject {
     @Published var profileState = LoadingState<ProfileResponse>.idle
     @Published var profileResponse: ProfileResponse?
     
-    @Published var username: String? = "Obada.semary"
-    @Published var password: String? = "Admin123"
+    @Published var username: String? = UserDefaultsManager.shared.username
+    @Published var password: String? = UserDefaultsManager.shared.password
+
+    var is3rdPartyAuthenticationRequestAccepted: Bool {
+        UserDefaultsManager.shared.is3rdPartyAuthenticationRequestAccepted
+    }
     
     init(repo: MainServicesRepoType) {
         self.repo = repo
@@ -58,14 +65,27 @@ class LoginVM: ObservableObject {
                 
                 self.tokenState = .loaded(model)
                 self.tokenResponse = model
-                
+
+                // I know this is not the correct implementation but I want to just fix the issue and move on
+
+                if !self.is3rdPartyAuthenticationRequestAccepted {
+                    UserDefaultsManager.shared.is3rdPartyAuthenticationRequestAccepted = true
+                    print("https://www.themoviedb.org/authenticate/\(self.tokenResponse?.requestToken ?? "")")
+                    self.openURL(URL(string: "https://www.themoviedb.org/authenticate/\(self.tokenResponse?.requestToken ?? "https://www.apple.com")")!)
+                } else {
+                    return
+                }
+
             }.store(in: &cancellables)
     }
     
     func login() {
         
         guard let username = username, let password = password, let requestToken = tokenResponse?.requestToken  else { return }
-        
+
+        UserDefaultsManager.shared.username = username
+        UserDefaultsManager.shared.password = password
+
         print(username, password, requestToken)
         
         self.repo.createSessionWithLogin(username: username, password: password, requestToken: requestToken)
