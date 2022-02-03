@@ -1,8 +1,8 @@
 PODS:
-  - Alamofire (5.2.2)
-  - SwiftMessages (8.0.3):
-    - SwiftMessages/App (= 8.0.3)
-  - SwiftMessages/App (8.0.3)
+  - Alamofire (5.5.0)
+  - SwiftMessages (9.0.6):
+    - SwiftMessages/App (= 9.0.6)
+  - SwiftMessages/App (9.0.6)
 
 DEPENDENCIES:
   - Alamofire
@@ -14,9 +14,9 @@ SPEC REPOS:
     - SwiftMessages
 
 SPEC CHECKSUMS:
-  Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
-  SwiftMessages: 063ec9ffea3ffa7d17ba595157a9ec78e4fe045f
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  SwiftMessages: f0c7ef4705a570ad6c5e208b611f4333e660ed92
 
 PODFILE CHECKSUM: e1c0354b6b3c3e96e017515455aa705f3a08dc3c
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.11.2
