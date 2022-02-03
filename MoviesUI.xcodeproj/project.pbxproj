@@ -11,6 +11,7 @@
 		6DDF733BA1F442D33AC92A73 /* Pods_MoviesUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D8A621DD76D0ABD18CC9F75 /* Pods_MoviesUI.framework */; };
 		AF2708CB258AC3930032A2EB /* WatchListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2708CA258AC3930032A2EB /* WatchListVM.swift */; };
 		AF2708DC258AE0700032A2EB /* AddToListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2708DB258AE0700032A2EB /* AddToListResponse.swift */; };
+		AF3A7A0927AAB10C00F41BFC /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF3A7A0827AAB10C00F41BFC /* UserDefaultsManager.swift */; };
 		AF54F188256464E100BB9C42 /* Injector.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF54F187256464E100BB9C42 /* Injector.swift */; };
 		AF54F19C2564CAAD00BB9C42 /* DependencyResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF54F19B2564CAAD00BB9C42 /* DependencyResolver.swift */; };
 		AF54F1A32564CB4E00BB9C42 /* ServiceRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF54F1A22564CB4E00BB9C42 /* ServiceRepo.swift */; };
@@ -112,6 +113,7 @@
 		633F8B0DF66EB35591B0AE75 /* Pods-MoviesUI-MoviesUIUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesUI-MoviesUIUITests.debug.xcconfig"; path = "Target Support Files/Pods-MoviesUI-MoviesUIUITests/Pods-MoviesUI-MoviesUIUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF2708CA258AC3930032A2EB /* WatchListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListVM.swift; sourceTree = "<group>"; };
 		AF2708DB258AE0700032A2EB /* AddToListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToListResponse.swift; sourceTree = "<group>"; };
+		AF3A7A0827AAB10C00F41BFC /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		AF54F187256464E100BB9C42 /* Injector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injector.swift; sourceTree = "<group>"; };
 		AF54F19B2564CAAD00BB9C42 /* DependencyResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyResolver.swift; sourceTree = "<group>"; };
 		AF54F1A22564CB4E00BB9C42 /* ServiceRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceRepo.swift; sourceTree = "<group>"; };
@@ -437,6 +439,7 @@
 				AFF08D062581F42C001139AB /* HeadingView.swift */,
 				AFF08CD125818022001139AB /* CustomTab.swift */,
 				AF736049256C04F200E38E27 /* CustomBottonTabBarTabs.swift */,
+				AF3A7A0827AAB10C00F41BFC /* UserDefaultsManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -905,6 +908,7 @@
 				AF885A0A2562F8210040C9CE /* MoviesUIApp.swift in Sources */,
 				AF73606A256C416600E38E27 /* MovieListResponse.swift in Sources */,
 				AF2708CB258AC3930032A2EB /* WatchListVM.swift in Sources */,
+				AF3A7A0927AAB10C00F41BFC /* UserDefaultsManager.swift in Sources */,
 				AF5D8E5D258AFA6600AD4CED /* AddToListView.swift in Sources */,
 				AF667B46258A82E700FDF9C7 /* ProfileVM.swift in Sources */,
 				AFA61606257F025300CCEE8C /* RatingView.swift in Sources */,
@@ -995,7 +999,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1050,7 +1054,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
